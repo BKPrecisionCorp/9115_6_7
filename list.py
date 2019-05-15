@@ -22,7 +22,7 @@ vi.write("seq:step:active 31")
 #steps each takes step#,val
 vi.write("seq:volt 1,13.6")
 vi.write("seq:curr 1,max")
-vi.write("seq:width 1,1")
+vi.write("seq:width 1,0.1")
 vi.write("seq:slope 1,0.1") #ramp to this point time in seconds
 
 vi.write("seq:volt 2,10")
@@ -42,11 +42,34 @@ vi.write("seq:slope 4,0.01")
 
 vi.write("seq:volt 5,13.6")
 vi.write("seq:curr 5,max")
-vi.write("seq:width 5,1")
+vi.write("seq:width 5,0.1")
 vi.write("seq:slope 5,0.05")
 
 #Save the sequence to memory
 vi.write("seq:save")
+
+#A second sequence for slot 2
+vi.write("seq:edit 2") 
+#set active steps (binary to decimal) here we have 3 steps (0-2) so binary (00 0000 0111) = 7 in decimal
+vi.write("seq:step:active 7")
+#steps each takes step#,val
+vi.write("seq:volt 1,5")
+vi.write("seq:curr 1,max")
+vi.write("seq:width 1,0.1")
+vi.write("seq:slope 1,0.1") #ramp to this point time in seconds
+
+vi.write("seq:volt 2,8")
+vi.write("seq:curr 2,max")
+vi.write("seq:width 2,0.1")
+vi.write("seq:slope 2,0.05")
+
+vi.write("seq:volt 3,13.6")
+vi.write("seq:curr 3,max")
+vi.write("seq:width 3,0.2")
+vi.write("seq:slope 3,0.05")
+
+vi.write("seq:save")
+
 time.sleep(1)
 
 #Create a list that calls the sequence
@@ -54,8 +77,8 @@ vi.write("list:state off") # to edit, the list mode must be off
 vi.write("list:edit 1")
 vi.write("list:repeat 1")
 #set the sequences to use here it is just the first
-#The set is a binary representation again 00 0000 0001 so step 1 is the only active one
-vi.write("list:link:sequence 1")
+#The set is a binary representation again 00 0000 0011 so step 1 is the only active one
+vi.write("list:link:sequence 3")
 vi.write("list:power max")
 vi.write("list:save")
 time.sleep(1)
