@@ -8,3 +8,5 @@ PYVisa
 ```
 pip install pyvisa
 ```
+
+https://www.bkprecision.com/products/power-supplies/9115-1200w-multi-range-80v-60a-dc-power-supply.html
