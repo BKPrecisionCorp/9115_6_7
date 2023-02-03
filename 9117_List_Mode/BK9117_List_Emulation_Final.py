@@ -3,7 +3,7 @@
 # https://bkpmedia.s3.amazonaws.com/downloads/programming_manuals/en-us/9115_series_programming_manual.pdf
 # Note the 9117 can not utilize the list mode functions
 
-import visa
+import pyvisa as visa
 import time     # This is used for the sleep function (Delay)
 
 
